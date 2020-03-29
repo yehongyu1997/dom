@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>删除添加水果</title>
+    <style>
+      ul li button {
+        position: relative;
+        left: 15px;
+      }
+      ul li {
+        font-size: 16px;
+        margin-top: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" id="input" placeholder="请输入水果" />
+    <button id="btn">添加</button>
+    <ul id="list"></ul>
+    <script>
+      var input = document.querySelector("#input");
+      var btn = document.getElementById("btn");
+      var list = document.getElementById("list");
+
+      // 创建li节点
+      btn.onclick = function() {
+        var li = document.createElement("li");
+        var btn1 = document.createElement("button");
+        li.innerText = input.value;
+        btn1.innerText = "删除";
+        list.appendChild(li);
+        li.appendChild(btn1);
+        input.value = "";
+        input.focus();
+      };
+      // 事件委托
+      list.onclick = function(e) {
+        if (e.target.nodeName.toLowerCase() == "button") {
+          list.removeChild(e.target.parentNode);
+        }
+      };
+    </script>
+  </body>
+</html>
