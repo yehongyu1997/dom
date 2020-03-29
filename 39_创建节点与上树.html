@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 创建节点与上树</title>
+</head>
+<body>
+    <input type="text" id="kuang">
+    <button id="btn1">按我appendChild</button>
+    <button id="btn2">按我insertBefore</button>
+    <ul id="list"></ul>
+    <script>
+       var btn1 = document.querySelector('#btn1');
+        var btn2 = document.querySelector('#btn2');
+        var list = document.querySelector('#list');
+        var kuang = document.querySelector('#kuang');
+       btn1.onclick = function (){
+        //    创建一个新的节点 是孤儿节点，需要通过方法来上树
+        var li = document.createElement('li');
+        // 给li赋值
+        li.innerText = kuang.value;
+        // 上树    父节点打点
+        list.appendChild(li);
+        kuang.value ='';
+        kuang.focus();
+       }
+       btn2.onclick = function (){
+        //    创建一个新的节点
+        var li = document.createElement('li');
+        // 给li赋值
+        li.innerText = kuang.value;
+        // 上树    父节点打点
+        list.insertBefore(li,list.firstChild);
+        kuang.value ='';
+        kuang.focus();
+       }
+    </script>
+</body>
+</html>

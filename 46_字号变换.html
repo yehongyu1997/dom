@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>字号变换</title>
+    <style>
+      h3 {
+        font-size: 26px;
+        font-weight: normal;
+      }
+      p {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="btn1">字号增加</button>
+    <button id="btn2">字号减小</button>
+    <p id="para"></p>
+    <h3 id="h3">不放弃就会成功！！！</h3>
+    <script>
+      var btn1 = document.getElementById("btn1");
+      var btn2 = document.getElementById("btn2");
+      var para = document.getElementById("para");
+      var h3 = document.getElementById("h3");
+      var n = 26;
+      para.innerText = "当前字体大小为" + n + "号";
+      //   给btn1添加监听，当点击btn1时，字号自加2，且btn2的disabled为空，
+      // 从而达到给btn2解封的目的，当btn1的字号达到30时为最大，btn1封禁自己
+      btn1.onclick = function() {
+        btn2.disabled = "";
+        if (n < 30) {
+          n += 2;
+          h3.style.fontSize = n + "px";
+          para.innerText = "当前字体大小为" + n + "号";
+        }
+        if (n == 30) {
+          h3.style.fontSize = n + "px";
+          btn1.disabled = "disabled";
+          para.innerText = "当前字体大小为" + n + "号";
+        }
+      };
+      btn2.onclick = function() {
+        btn1.disabled = "";
+        if (n > 20) {
+          n -= 2;
+          h3.style.fontSize = n + "px";
+          para.innerText = "当前字体大小为" + n + "号";
+        }
+        if (n == 20) {
+          btn2.disabled = "disabled";
+          h3.style.fontSize = n + "px";
+          para.innerText = "当前字体大小为" + n + "号";
+        }
+      };
+    </script>
+  </body>
+</html>

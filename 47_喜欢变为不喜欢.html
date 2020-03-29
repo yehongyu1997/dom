@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>喜欢变为不喜欢</title>
+  </head>
+  <body>
+    <p>我喜欢的明星</p>
+    <ul id="list1">
+      <li><label> <input type="checkbox" class="checkbox">王一博</label></li>
+      <li><label> <input type="checkbox" class="checkbox">周杰伦</label></li>
+      <li><label> <input type="checkbox" class="checkbox">陈奕迅</label></li>
+    </ul>
+    <button id="btn1">把选择的改为不喜欢</button>
+    <p>我不喜欢的明星</p>
+    <ul id="list2">
+      <li><label> <input type="checkbox" class="checkbox">易烊千玺</label></li>
+      <li><label> <input type="checkbox" class="checkbox"> 王俊凯</label></li>
+    </ul>
+    <button id="btn2">把选择的改为喜欢</button>
+    <script>
+        var btn1 = document.getElementById('btn1');
+        var btn2 = document.getElementById('btn2');
+        var list1 = document.getElementById('list1');
+        var list2 = document.getElementById('list2');
+        var checkboxs = document.getElementsByClassName('checkbox');
+        var li1s = list1.getElementsByTagName('li');
+        var li2s = list2.getElementsByTagName('li');
+        btn1.onclick = function(){
+          
+            for (var i =0 ; i<li1s.length;i++){
+                if(li1s[i].getElementsByTagName('input')[0].checked){
+                    list2.appendChild(li1s[i]);
+                    i--;
+                }
+            };
+            for (var i = 0; i < checkboxs.length; i++) {
+                checkboxs[i].checked = false;
+            }
+        }
+        btn2.onclick = function(){
+          for (var i =0 ; i<li2s.length;i++){
+              if(li2s[i].getElementsByTagName('input')[0].checked){
+                  list1.appendChild(li2s[i]);
+                  i--;
+              }
+          };
+          for (var i = 0; i < checkboxs.length; i++) {
+              checkboxs[i].checked = false;
+          }
+      }
+    </script>
+  </body>
+</html>
