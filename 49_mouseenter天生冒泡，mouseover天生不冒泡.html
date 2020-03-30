@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mouseenter和mouseover的区别</title>
+    <style>
+      #box1 {
+        width: 200px;
+        height: 200px;
+        padding: 50px;
+        border: 1px solid #000;
+      }
+
+      #box2 {
+        width: 100px;
+        height: 100px;
+        padding: 50px;
+        border: 1px solid #000;
+      }
+
+      #box3 {
+        width: 60px;
+        height: 60px;
+        border: 1px solid #000;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box1">
+      <div id="box2">
+        <div id="box3"></div>
+      </div>
+    </div>
+    <script>
+      var box1 = document.getElementById("box1");
+      var box2 = document.getElementById("box2");
+      var box3 = document.getElementById("box3");
+      // -----------------------------------------------
+      // onmouseenter天生不冒泡
+      // box1.onmouseenter = function (){
+      //     console.log('我是box1的onmouseenter');
+      // };
+      // box2.onmouseenter = function (){
+      //     console.log('我是box2的onmouseenter');
+      // };
+      // box3.onmouseenter = function (){
+      //     console.log('我是box3的onmouseenter');
+      // }
+      // ------------------------------------------------
+      // onmouseover 天生就冒泡 但是加上阻止事件继续发生之后
+    //   （也就是加上 e.stopPropagation();）就不冒泡了，和Onmouseenter一样的效果
+      box1.onmouseover = function(e) {
+        e.stopPropagation();
+        console.log("我是box1的onmouseover");
+      };
+      box2.onmouseover = function(e) {
+        e.stopPropagation();
+        console.log("我是box2的onmouseover");
+      };
+      box3.onmouseover = function(e) {
+        e.stopPropagation();
+        console.log("我是box3的onmouseover");
+      };
+    </script>
+  </body>
+</html>

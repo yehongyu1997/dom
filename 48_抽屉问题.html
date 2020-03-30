@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>抽屉问题</title>
+    <style>
+      #drawer {
+        position: absolute;
+        width: 500px;
+        height: 100%;
+        right: -500px;
+        top: 0px;
+        /* 渐变色很好看呀！ */
+        background: -webkit-linear-gradient(right, white, pink);
+      }
+    </style>
+  </head>
+  <body>
+    <button id="btn">点我抽出抽屉</button>
+    <div id="drawer"></div>
+    <script>
+        var btn = document.getElementById('btn');
+        var drawer = document.getElementById('drawer');
+        // 给按钮设置监听，改变drawer的right值
+        btn.onclick =function (e){
+            // 阻止事件继续传播，就是阻止btn冒泡；
+            // 也就是我所理解的阻止扩散
+            e.stopPropagation();
+            drawer.style.right ='0px';
+        }
+        // 点击空白地方抽屉返回
+        document.onclick = function(){
+            drawer.style.right ='-500px';
+        }
+        // 也阻止drawer冒泡，即点击抽屉，不返回
+        drawer.onclick= function (e){
+            e.stopPropagation();
+        }
+    </script>
+  </body>
+</html>
